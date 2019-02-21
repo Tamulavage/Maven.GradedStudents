@@ -6,13 +6,17 @@ import java.util.Arrays;
 public class Student {
     private String firstName;
     private String lastName;
-    private  ArrayList<Double> examScores;
+    private   ArrayList<Double> examScores;
 
     public Student(String firstName, String lastName, Double... testScores){
         this.firstName = firstName;
         this.lastName = lastName;
         if (testScores != null) {
             this.examScores = new ArrayList<>((Arrays.asList(testScores)));
+        }
+        else {
+            // initialize with empty array to use size and isEmpty functions
+            this.examScores = new ArrayList<>();
         }
     }
 
@@ -33,6 +37,31 @@ public class Student {
     }
 
     public Integer getNumberOfExamsTaken(){
-        return examScores.size();
+      //  System.out.println(examScores.isEmpty());
+        return examScores.isEmpty() ? 0 : examScores.size();
+    }
+
+    public String getExamScores() {
+
+        Integer numOfExams = getNumberOfExamsTaken();
+
+        StringBuilder sb = new StringBuilder();
+        if(numOfExams > 0)
+        {
+            sb.append("Exam Scores:\n");
+            for(int i  = 1; i <= numOfExams; i++) {
+                sb.append("\tExam "+i + " -> ");
+                sb.append(String.format("%-2.0f", examScores.get(i-1)));
+                sb.append("\n");
+
+
+            }
+        }
+        else
+        {
+            sb.append("No Exams Taken");
+        }
+
+        return sb.toString();
     }
 }

@@ -68,4 +68,48 @@ public class StudentTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void getNumberOfExamsTakenNoExamsTest(){
+        // Given
+        Integer expected = 0;
+        Student studentTest = new Student(null,null, null);
+
+        // When
+        Integer actual = studentTest.getNumberOfExamsTaken();
+
+        // Then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getExamScoreTest(){
+        // Given
+        String firstName = "George";
+        String lastName = "Bush";
+        Double[] examScores = { 100.00, 95.0, 123.0, 96.0};
+        Student student = new Student(firstName, lastName, examScores);
+        String expected1 = "Exam Scores:\n\tExam 1 -> 100\n\tExam 2 -> 95\n";
+        String expected2 = "\tExam 3 -> 123\n\tExam 4 -> 96\n";
+        String expected = expected1+expected2;
+
+        //When
+        String actual = student.getExamScores();
+
+        // THen
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getExamScoreNoExamsTest(){
+        // Given
+        Student student = new Student(null, null, null);
+        String expected = "No Exams Taken";
+
+        //When
+        String actual = student.getExamScores();
+
+        // THen
+        Assert.assertEquals(actual, expected);
+    }
+
 }
