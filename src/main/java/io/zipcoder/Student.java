@@ -64,4 +64,13 @@ public class Student {
 
         return sb.toString();
     }
+
+    public void addExamScore(double examScore) {
+        examScores.add(examScore);
+    }
+
+    public void setExamScore(Integer examID, double examScore) {
+        // use set and move index by 1
+        examScores.set(examID-1, examScore);
+    }
 }

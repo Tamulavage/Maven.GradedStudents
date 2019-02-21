@@ -112,4 +112,33 @@ public class StudentTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test
+    public void addExamScoreTest() {
+        // Given
+        String expected = "Exam Scores:\n\tExam 1 -> 55\n";
+        Student student = new Student(null,null,null);
+
+        // When
+        student.addExamScore(55.0);
+        String actual = student.getExamScores();
+
+        // Then
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void setExamScoreTest() {
+        // Given
+        Double[] examScores = { 100.0 };
+        String expected = "Exam Scores:\n\tExam 1 -> 99\n";
+        Student student = new Student(null, null, examScores);
+
+        // When
+        student.setExamScore(1,99.0);
+        String actual = student.getExamScores();
+
+        // Then
+        Assert.assertEquals(expected, actual);
+    }
+
 }
