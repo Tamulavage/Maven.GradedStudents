@@ -69,8 +69,33 @@ public class Student {
         examScores.add(examScore);
     }
 
-    public void setExamScore(Integer examID, double examScore) {
+    // ** IF have time later - work on throw/catch and test */
+  //  public void setExamScore(Integer examID, double examScore) throws Exception {
+  public void setExamScore(Integer examID, double examScore)  {
+       /* if(examID < 0 || examID >getNumberOfExamsTaken())
+        {
+            throw new Exception("Bad Index");
+        }*/
+
         // use set and move index by 1
         examScores.set(examID-1, examScore);
     }
+
+    public double getAverageExamScore() {
+        Double sum = 0.0;
+        for(Double ele: examScores)
+        {
+            sum=sum+ele;
+        }
+        return sum/getNumberOfExamsTaken();
+    }
+
+    public String toString(){
+        String retVal = "Student Name: " + firstName +" " + lastName + "\n";
+        retVal = retVal + "Average Score: " + getAverageExamScore() + "\n";
+        retVal = retVal + getExamScores();
+
+        return  retVal;
+    }
+
 }

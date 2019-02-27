@@ -140,5 +140,60 @@ public class StudentTest {
         // Then
         Assert.assertEquals(expected, actual);
     }
+/* // if have time later - figure out expecting catch
+    @Test(expected = Exception.class)
+    public void setExamScoreIndexOutOfBoundTest() {
+        // Given
+        Double[] examScores = {100.0};
+        Student student = new Student(null, null, examScores);
+
+        // When
+        student.setExamScore(0, 99.0);
+        String actual = student.getExamScores();
+
+        // Then
+        // Exception thrown
+    }
+    */
+
+    @Test
+    public void getAverageExamScore() {
+        // Given
+        Double[] examScores = {100.0 , 150.0, 250.0, 0.0};
+        Student student = new Student(null, null, examScores);
+        Double expected = 125.0;
+
+        // WHen
+        double actual = student.getAverageExamScore();
+
+        // Then
+        Assert.assertEquals(expected, actual, 0.0);
+
+    }
+
+    @Test
+    public void toStringTest() {
+        // Given
+        String fName = "David";
+        String lName = "Tee";
+        Double[] examScores = {100.0, 150.0, 250.0, 0.0};
+        Student student = new Student(fName, lName, examScores);
+        StringBuilder sb = new StringBuilder();
+        sb.append( "Student Name: David Tee\n");
+        sb.append( "Average Score: 125.0\n");
+        sb.append( "Exam Scores:\n");
+        sb.append( "\tExam 1 -> 100\n");
+        sb.append( "\tExam 2 -> 150\n");
+        sb.append( "\tExam 3 -> 250\n");
+        sb.append( "\tExam 4 -> 0 \n");
+        String expected = sb.toString();
+
+        // When
+        String actual = student.toString();
+
+        // Then
+        Assert.assertEquals(expected,actual);
+    }
+
 
 }
